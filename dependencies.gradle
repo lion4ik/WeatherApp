@@ -32,6 +32,8 @@ ext {
             daggerCompiler           : "com.google.dagger:dagger-compiler:${versions.dagger}",
             archCompExtensions       : "android.arch.lifecycle:extensions:${versions.archComponents}",
             archCompCompiler         : "android.arch.lifecycle:compiler:${versions.archComponents}",
+            room                    : "android.arch.persistence.room:runtime:${versions.archComponents}",
+            roomCompiler            : "android.arch.persistence.room:compiler:${versions.archComponents}",
             cicerone                 : "ru.terrakok.cicerone:cicerone:${versions.cicerone}",
 
             timber                   : "com.jakewharton.timber:timber:${versions.timber}",
@@ -56,15 +58,21 @@ ext {
     def impl = "implementation"
     def apt = "kapt"
     def testImpl = "testImplementation"
+    def api = "api"
 
     def modules = [
             repository               : ":repository",
             remote                   : ":remote",
             storage                  : ":storage",
-            utils                    : ":utils"
+            domain                   : ":domain",
+            core                     : ":core"
     ]
 
     appDependencies = [
+            [configuration: impl, dependency: project(modules.domain)],
+            [configuration: impl, dependency: project(modules.repository)],
+            [configuration: impl, dependency: project(modules.storage)],
+            [configuration: impl, dependency: project(modules.remote)],
             [configuration: impl, dependency: libs.kotlinStdLib],
 
             [configuration: impl, dependency: libs.appCompat],
@@ -88,5 +96,46 @@ ext {
             [configuration: testImpl, dependency: testLibs.mockitoKotlin],
             [configuration: testImpl, dependency: testLibs.robolectric],
             [configuration: testImpl, dependency: testLibs.archTestHelpers],
+    ]
+
+    coreDependencies = [
+            [configuration: impl, dependency: libs.kotlinStdLib]
+    ]
+
+    domainDependencies = [
+            [configuration: impl, dependency: libs.kotlinStdLib],
+
+            [configuration: impl, dependency: libs.dagger],
+            [configuration: apt, dependency: libs.daggerCompiler],
+    ]
+
+    repositoryDependencies = [
+            [configuration: impl, dependency: project(modules.domain)],
+            [configuration: impl, dependency: libs.kotlinStdLib],
+
+            [configuration: impl, dependency: libs.dagger],
+            [configuration: apt, dependency: libs.daggerCompiler],
+    ]
+
+    remoteDependencies = [
+            [configuration: impl, dependency: project(modules.repository)],
+            [configuration: impl, dependency: libs.kotlinStdLib],
+
+            [configuration: impl, dependency: libs.retrofit],
+            [configuration: impl, dependency: libs.retrofitConverterGson],
+            [configuration: impl, dependency: libs.okhttpLogging],
+
+            [configuration: impl, dependency: libs.dagger],
+            [configuration: apt, dependency: libs.daggerCompiler],
+    ]
+
+    storageDependencies = [
+            [configuration: impl, dependency: project(modules.repository)],
+            [configuration: impl, dependency: libs.kotlinStdLib],
+
+            [configuration: impl, dependency: libs.room],
+            [configuration: apt, dependency: libs.roomCompiler],
+            [configuration: impl, dependency: libs.dagger],
+            [configuration: apt, dependency: libs.daggerCompiler],
     ]
 }

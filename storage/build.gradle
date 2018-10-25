@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    def ext = rootProject.ext
+
+    compileSdkVersion ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion ext.minSdkVersion
+        targetSdkVersion ext.targetSdkVersion
+        versionCode ext.moduleVersion
+        versionName ext.moduleVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    rootProject.ext.storageDependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+}
