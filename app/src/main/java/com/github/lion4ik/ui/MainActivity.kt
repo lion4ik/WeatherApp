@@ -1,9 +1,10 @@
-package com.github.lion4ik
+package com.github.lion4ik.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.github.lion4ik.R
+import com.github.lion4ik.ui.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

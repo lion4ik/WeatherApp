@@ -10,6 +10,7 @@ ext {
 
             cicerone                 : '4.0.0',  // https://github.com/terrakok/Cicerone
 
+            coroutines               : '1.0.0-RC1', // https://github.com/Kotlin/kotlinx.coroutines
             retrofit                 : '2.4.0',  // https://github.com/square/retrofit
             okhttp                   : '3.10.0', // https://github.com/square/okhttp
             gson                     : '2.8.2',  // https://github.com/google/gson/releases
@@ -35,6 +36,7 @@ ext {
 
             timber                   : "com.jakewharton.timber:timber:${versions.timber}",
 
+            coroutines               : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}",
             gson                     : "com.google.code.gson:gson:${versions.gson}",
             retrofit                 : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
             retrofitConverterGson    : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
@@ -54,7 +56,6 @@ ext {
     def impl = "implementation"
     def apt = "kapt"
     def testImpl = "testImplementation"
-    def androidTestImpl = "androidTestImplementation"
 
     def modules = [
             repository               : ":repository",
@@ -78,9 +79,9 @@ ext {
             [configuration: apt, dependency: libs.archCompCompiler],
 
             [configuration: impl, dependency: libs.cicerone],
+            [configuration: impl, dependency: libs.coroutines],
 
             [configuration: impl, dependency: libs.timber],
-
 
             [configuration: testImpl, dependency: testLibs.junit],
             [configuration: testImpl, dependency: testLibs.mockito],
