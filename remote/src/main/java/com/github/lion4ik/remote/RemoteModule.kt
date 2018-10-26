@@ -1,6 +1,8 @@
 package com.github.lion4ik.remote
 
+import com.github.lion4ik.core.remote.ForecastRemote
 import com.github.lion4ik.remote.api.ForecastApi
+import com.github.lion4ik.remote.impl.ForecastRemoteImpl
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.imagenpay.app.remote.misc.AllowAllHostNameVerifier
@@ -79,5 +81,9 @@ class RemoteModule(private val baseUrl: String,
 
     @Singleton
     @Provides
-    internal fun provideForecastApi(retrofit: Retrofit): ForecastApi = retrofit.create(ForecastApi::class.java)
+    fun provideForecastApi(retrofit: Retrofit): ForecastApi = retrofit.create(ForecastApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideForecastRemote(forecastApi: ForecastApi): ForecastRemote = ForecastRemoteImpl(forecastApi)
 }

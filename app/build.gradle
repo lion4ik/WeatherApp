@@ -14,6 +14,9 @@ android {
         versionCode ext.moduleVersion
         versionName ext.moduleVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'API_BASE_URL', '"https://prometheus-api.draewil.net"'
+        buildConfigField 'boolean', 'API_ALLOW_ANY_CERT', 'true'
     }
 
     compileOptions {

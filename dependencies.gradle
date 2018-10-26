@@ -71,10 +71,11 @@ ext {
     ]
 
     appDependencies = [
-            [configuration: impl, dependency: project(modules.domain)],
-            [configuration: impl, dependency: project(modules.repository)],
-            [configuration: impl, dependency: project(modules.storage)],
+            [configuration: impl, dependency: project(modules.core)],
             [configuration: impl, dependency: project(modules.remote)],
+            [configuration: impl, dependency: project(modules.storage)],
+            [configuration: impl, dependency: project(modules.repository)],
+            [configuration: impl, dependency: project(modules.domain)],
             [configuration: impl, dependency: libs.kotlinStdLib],
 
             [configuration: impl, dependency: libs.appCompat],
@@ -101,18 +102,21 @@ ext {
     ]
 
     coreDependencies = [
-            [configuration: impl, dependency: libs.kotlinStdLib]
+            [configuration: impl, dependency: libs.kotlinStdLib],
+            [configuration: impl, dependency: libs.coroutines],
     ]
 
     domainDependencies = [
+            [configuration: impl, dependency: project(modules.core)],
             [configuration: impl, dependency: libs.kotlinStdLib],
 
+            [configuration: impl, dependency: libs.coroutines],
             [configuration: impl, dependency: libs.dagger],
             [configuration: apt, dependency: libs.daggerCompiler],
     ]
 
     repositoryDependencies = [
-            [configuration: impl, dependency: project(modules.domain)],
+            [configuration: impl, dependency: project(modules.core)],
             [configuration: impl, dependency: libs.kotlinStdLib],
 
             [configuration: impl, dependency: libs.dagger],
@@ -120,7 +124,7 @@ ext {
     ]
 
     remoteDependencies = [
-            [configuration: impl, dependency: project(modules.repository)],
+            [configuration: impl, dependency: project(modules.core)],
             [configuration: impl, dependency: libs.kotlinStdLib],
 
             [configuration: impl, dependency: libs.coroutines],
@@ -135,7 +139,7 @@ ext {
     ]
 
     storageDependencies = [
-            [configuration: impl, dependency: project(modules.repository)],
+            [configuration: impl, dependency: project(modules.core)],
             [configuration: impl, dependency: libs.kotlinStdLib],
 
             [configuration: impl, dependency: libs.room],
