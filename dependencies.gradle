@@ -11,6 +11,7 @@ ext {
             cicerone                 : '4.0.0',  // https://github.com/terrakok/Cicerone
 
             coroutines               : '1.0.0-RC1', // https://github.com/Kotlin/kotlinx.coroutines
+            retrofitCoroutinesAdapter : '0.9.2', // https://github.com/JakeWharton/retrofit2-kotlin-coroutines-adapter
             retrofit                 : '2.4.0',  // https://github.com/square/retrofit
             okhttp                   : '3.10.0', // https://github.com/square/okhttp
             gson                     : '2.8.2',  // https://github.com/google/gson/releases
@@ -39,6 +40,7 @@ ext {
             timber                   : "com.jakewharton.timber:timber:${versions.timber}",
 
             coroutines               : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}",
+            retrofitCoroutinesAdapter : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${versions.retrofitCoroutinesAdapter}",
             gson                     : "com.google.code.gson:gson:${versions.gson}",
             retrofit                 : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
             retrofitConverterGson    : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
@@ -121,9 +123,12 @@ ext {
             [configuration: impl, dependency: project(modules.repository)],
             [configuration: impl, dependency: libs.kotlinStdLib],
 
+            [configuration: impl, dependency: libs.coroutines],
+            [configuration: impl, dependency: libs.retrofitCoroutinesAdapter],
             [configuration: impl, dependency: libs.retrofit],
             [configuration: impl, dependency: libs.retrofitConverterGson],
             [configuration: impl, dependency: libs.okhttpLogging],
+            [configuration: impl, dependency: libs.gson],
 
             [configuration: impl, dependency: libs.dagger],
             [configuration: apt, dependency: libs.daggerCompiler],
