@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-class ScopedViewModel: ViewModel(), CoroutineScope {
+open class ScopedViewModel: ViewModel(), CoroutineScope {
 
     private val job: Job = Job()
 

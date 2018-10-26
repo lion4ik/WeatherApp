@@ -5,7 +5,7 @@ sourceCompatibility = rootProject.ext.javaVersion
 targetCompatibility = rootProject.ext.javaVersion
 
 dependencies {
-    rootProject.ext.repositoryDependencies.each {
+    rootProject.ext.coreDependencies.each {
         add(it.configuration, it.dependency, it.options)
     }
 }

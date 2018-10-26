@@ -4,6 +4,7 @@ import com.github.lion4ik.domain.UseCaseModule
 import com.github.lion4ik.remote.RemoteModule
 import com.github.lion4ik.repository.RepositoryModule
 import com.github.lion4ik.storage.StorageModule
+import com.github.lion4ik.ui.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,4 +17,6 @@ import javax.inject.Singleton
     RemoteModule::class,
     StorageModule::class])
 interface AppComponent {
+
+    fun inject(mainActivity: MainActivity)
 }
