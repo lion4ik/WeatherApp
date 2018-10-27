@@ -88,6 +88,8 @@ ext {
 
             [configuration: impl, dependency: libs.archCompExtensions],
             [configuration: apt, dependency: libs.archCompCompiler],
+            [configuration: impl, dependency: libs.room],
+            [configuration: apt, dependency: libs.roomCompiler],
 
             [configuration: impl, dependency: libs.cicerone],
             [configuration: impl, dependency: libs.coroutines],

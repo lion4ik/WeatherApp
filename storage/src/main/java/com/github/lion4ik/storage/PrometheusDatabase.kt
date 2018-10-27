@@ -8,10 +8,10 @@ import com.github.lion4ik.storage.model.ForecastDbModel
     entities = [
         ForecastDbModel::class
     ],
-    version = ForecastDatabase.DB_VERSION,
+    version = PrometheusDatabase.DB_VERSION,
     exportSchema = true
 )
-abstract class ForecastDatabase : RoomDatabase() {
+abstract class PrometheusDatabase : RoomDatabase() {
 
     companion object {
         const val DB_FILE_NAME = "prometheus.db"

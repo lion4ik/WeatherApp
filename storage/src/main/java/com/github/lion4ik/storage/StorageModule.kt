@@ -13,14 +13,14 @@ class StorageModule(private val appContext: Context) {
 
     @Singleton
     @Provides
-    fun provideForecastDatabase(): ForecastDatabase =
+    fun provideForecastDatabase(): PrometheusDatabase =
         Room.databaseBuilder(
             appContext,
-            ForecastDatabase::class.java,
-            ForecastDatabase.DB_FILE_NAME
+            PrometheusDatabase::class.java,
+            PrometheusDatabase.DB_FILE_NAME
         ).build()
 
     @Singleton
     @Provides
-    fun provideForecastStorage(forecastDb: ForecastDatabase): ForecastStorage = ForecastStorageImpl(forecastDb.getForecastDao())
+    fun provideForecastStorage(prometheusDb: PrometheusDatabase): ForecastStorage = ForecastStorageImpl(prometheusDb.getForecastDao())
 }

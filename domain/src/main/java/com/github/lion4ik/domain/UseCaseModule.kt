@@ -11,4 +11,8 @@ class UseCaseModule {
     @Singleton
     @Provides
     fun provideGetForecastUseCase(forecastRepository: ForecastRepository): GetForecastUseCase = GetForecastUseCase(forecastRepository)
+
+    @Singleton
+    @Provides
+    fun provideGetAllForecastsUseCase(forecastRepository: ForecastRepository): GetAllForecastsUseCase = GetAllForecastsUseCase(forecastRepository)
 }

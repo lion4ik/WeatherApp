@@ -6,5 +6,6 @@ interface ForecastRepository {
 
     suspend fun getForecastRemote(lat: Double, long: Double, lang: String? = null, units: String? = null): Forecast
 
-    suspend fun getSavedForecast(lat: Double, long: Double, lang: String? = null, units: String? = null): Forecast
+    suspend fun getAllForecasts(): List<Forecast>
+
 }

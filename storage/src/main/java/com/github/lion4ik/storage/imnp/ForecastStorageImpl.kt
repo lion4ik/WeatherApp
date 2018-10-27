@@ -12,5 +12,5 @@ internal class ForecastStorageImpl(private val forecastDao: ForecastDao): Foreca
     }
 
     override suspend fun getAllForecasts(): List<Forecast> =
-            forecastDao.getForecasts()
+            forecastDao.getForecasts().map { it.toForecast() }
 }
