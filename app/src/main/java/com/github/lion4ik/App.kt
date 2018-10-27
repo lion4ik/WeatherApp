@@ -5,6 +5,7 @@ import com.github.lion4ik.dagger.AppComponent
 import com.github.lion4ik.dagger.AppModule
 import com.github.lion4ik.dagger.DaggerAppComponent
 import com.github.lion4ik.remote.RemoteModule
+import com.github.lion4ik.storage.StorageModule
 
 class App : Application() {
 
@@ -19,6 +20,7 @@ class App : Application() {
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule())
             .remoteModule(RemoteModule(BuildConfig.API_BASE_URL, BuildConfig.API_ALLOW_ANY_CERT, true))
+            .storageModule(StorageModule(this))
             .build()
     }
 }
