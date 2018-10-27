@@ -4,7 +4,7 @@ import com.github.lion4ik.domain.UseCaseModule
 import com.github.lion4ik.remote.RemoteModule
 import com.github.lion4ik.repository.RepositoryModule
 import com.github.lion4ik.storage.StorageModule
-import com.github.lion4ik.ui.ForecastFragment
+import com.github.lion4ik.ui.ForecastsFragment
 import com.github.lion4ik.ui.MainActivity
 import dagger.Component
 import javax.inject.Singleton
@@ -21,5 +21,5 @@ interface AppComponent {
 
     fun inject(mainActivity: MainActivity)
 
-    fun inject(forecastFragment: ForecastFragment)
+    fun inject(forecastsFragment: ForecastsFragment)
 }

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="toolbar_elevation">8dp</dimen>
+
+    <dimen name="fragment_forecasts_text_margin_top">8dp</dimen>
+    <dimen name="fragment_forecasts_drawable_padding">24dp</dimen>
 </resources>

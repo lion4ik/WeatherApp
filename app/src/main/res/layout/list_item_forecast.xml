@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             android:layout_margin="16dp">
+
+    <TextView
+            android:id="@+id/forecastTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/pr_forecast_title"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Europe/UTC"/>
+
+    <TextView
+            android:id="@+id/forecastTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragment_forecasts_text_margin_top"
+            android:background="@drawable/circle_background"
+            android:gravity="center"
+            android:textColor="@color/pr_white"
+            app:layout_constraintStart_toStartOf="@+id/forecastTitle"
+            app:layout_constraintTop_toBottomOf="@+id/forecastTitle"
+            tools:text="17.5'C"/>
+
+    <TextView
+            android:id="@+id/forecastLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/forecastTemperature"
+            app:layout_constraintStart_toEndOf="@+id/forecastTemperature"
+            tools:text="51.500334,-0.085013"/>
+
+    <TextView
+            android:id="@+id/forecastSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragment_forecasts_text_margin_top"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/forecastTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/forecastTemperature"
+            tools:text="Light Rain"/>
+
+    <TextView
+            android:id="@+id/forecastDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragment_forecasts_text_margin_top"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/forecastSummary"
+            app:layout_constraintTop_toBottomOf="@+id/forecastSummary"
+            tools:text="Rain will stop in a hour"/>
+
+    <TextView
+            android:id="@+id/windSpeedTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragment_forecasts_text_margin_top"
+            android:text="@string/fragment_forecasts_win_speed_title"
+            android:drawableStart="@drawable/shape_orange"
+            android:drawablePadding="@dimen/fragment_forecasts_drawable_padding"
+            app:layout_constraintStart_toStartOf="@+id/forecastDetails"
+            app:layout_constraintTop_toBottomOf="@+id/forecastDetails"/>
+
+    <TextView
+            android:id="@+id/humidityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_forecasts_humidity_title"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/shape_blue"
+            android:drawablePadding="@dimen/fragment_forecasts_drawable_padding"
+            app:layout_constraintStart_toStartOf="@+id/windSpeedTitle"
+            app:layout_constraintTop_toBottomOf="@+id/windSpeedTitle"/>
+
+    <TextView
+            android:id="@+id/windSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/windSpeedTitle"
+            tools:text="14 km/h"/>
+
+    <ImageView
+            android:id="@+id/windArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="45"
+            android:src="@drawable/ic_arrow_black"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/windSpeed"
+            app:layout_constraintTop_toTopOf="@+id/windSpeed"
+            app:layout_constraintBottom_toBottomOf="@+id/windSpeed"
+            tools:ignore="ContentDescription"/>
+
+    <TextView
+            android:id="@+id/humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/humidityTitle"
+            tools:text="0.87"/>
+
+</android.support.constraint.ConstraintLayout>

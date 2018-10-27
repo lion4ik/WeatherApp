@@ -3,4 +3,9 @@
     <color name="colorPrimary">#F5F5F5</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="pr_black">#000000</color>
+    <color name="pr_white">#ffffff</color>
+
+    <color name="pr_forecast_title">#47a39b</color>
 </resources>

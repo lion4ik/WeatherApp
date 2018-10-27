@@ -4,4 +4,6 @@
     <string name="error_api">Service is unavailable. Please try again later.</string>
     <string name="error_no_internet">Please check your internet connection.</string>
     <string name="error_unknown">Unknown error occurred.</string>
+    <string name="fragment_forecasts_humidity_title">Humidity</string>
+    <string name="fragment_forecasts_win_speed_title">Wind speed</string>
 </resources>
