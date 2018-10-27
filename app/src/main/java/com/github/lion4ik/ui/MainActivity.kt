@@ -1,16 +1,16 @@
 package com.github.lion4ik.ui
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import com.github.lion4ik.App
 import com.github.lion4ik.R
+import com.github.lion4ik.navigation.ForecastScreen
+import com.github.lion4ik.navigation.MainActivityNavigator
 import com.github.lion4ik.ui.base.BaseActivity
 import com.github.lion4ik.util.lazyNotThreadSafe
-import com.github.lion4ik.util.nonNullObserve
-import com.github.lion4ik.viewmodel.ForecastViewModel
 import com.github.lion4ik.viewmodel.MainActivityViewModelFactory
-import kotlinx.android.synthetic.main.activity_main.*
-import timber.log.Timber
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.commands.Command
+import ru.terrakok.cicerone.commands.Replace
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -18,24 +18,27 @@ class MainActivity : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: MainActivityViewModelFactory
 
-    private val forecastViewModel by lazyNotThreadSafe {
-        ViewModelProviders.of(this, viewModelFactory).get(ForecastViewModel::class.java)
-    }
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
+
+    private val navigator by lazyNotThreadSafe { MainActivityNavigator(this, R.id.container) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.appComponent.inject(this)
         setContentView(R.layout.activity_main)
-        observeData()
-        textView.setOnClickListener {
-            forecastViewModel.getForecast(ForecastViewModel.ForecastParams(51.500334, -0.085013))
+        if (savedInstanceState == null) {
+            navigator.applyCommands(arrayOf<Command>(Replace(ForecastScreen())))
         }
     }
 
-    private fun observeData() {
-        forecastViewModel.getForecast(ForecastViewModel.ForecastParams(51.500334, -0.085013)).nonNullObserve(this) {
-            Timber.d("forecast: " + it)
-            textView.text = it.toString()
-        }
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        navigatorHolder.removeNavigator()
     }
 }

@@ -3,7 +3,11 @@ package com.github.lion4ik.ui
 import android.support.v7.widget.Toolbar
 import com.github.lion4ik.ui.base.BaseFragment
 
-class AddLocationFragment: BaseFragment() {
+class AddLocationFragment : BaseFragment() {
+
+    companion object {
+        fun newInstance(): AddLocationFragment = AddLocationFragment()
+    }
 
     override fun getOptionalToolbar(): Toolbar? {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

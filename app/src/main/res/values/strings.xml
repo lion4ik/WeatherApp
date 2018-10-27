@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
+    <string name="app_name">Prometheus</string>
 
     <string name="error_api">Service is unavailable. Please try again later.</string>
     <string name="error_no_internet">Please check your internet connection.</string>
