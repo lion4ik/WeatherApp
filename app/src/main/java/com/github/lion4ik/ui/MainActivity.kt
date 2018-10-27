@@ -4,9 +4,9 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import com.github.lion4ik.App
 import com.github.lion4ik.R
-import com.github.lion4ik.extension.lazyNotThreadSafe
-import com.github.lion4ik.extension.nonNullObserve
 import com.github.lion4ik.ui.base.BaseActivity
+import com.github.lion4ik.util.lazyNotThreadSafe
+import com.github.lion4ik.util.nonNullObserve
 import com.github.lion4ik.viewmodel.ForecastViewModel
 import com.github.lion4ik.viewmodel.MainActivityViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,11 +27,13 @@ class MainActivity : BaseActivity() {
         App.appComponent.inject(this)
         setContentView(R.layout.activity_main)
         observeData()
-        textView.setOnClickListener { forecastViewModel.getForecast(51.500334,-0.085013) }
+        textView.setOnClickListener {
+            forecastViewModel.getForecast(ForecastViewModel.ForecastParams(51.500334, -0.085013))
+        }
     }
 
     private fun observeData() {
-        forecastViewModel.forecast.nonNullObserve(this) {
+        forecastViewModel.getForecast(ForecastViewModel.ForecastParams(51.500334, -0.085013)).nonNullObserve(this) {
             Timber.d("forecast: " + it)
             textView.text = it.toString()
         }

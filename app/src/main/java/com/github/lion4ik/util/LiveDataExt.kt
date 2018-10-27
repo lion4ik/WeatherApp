@@ -1,4 +1,4 @@
-package com.github.lion4ik.extension
+package com.github.lion4ik.util
 
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.LiveData

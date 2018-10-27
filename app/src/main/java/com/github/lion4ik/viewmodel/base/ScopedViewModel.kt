@@ -8,7 +8,7 @@ import kotlin.coroutines.CoroutineContext
 
 open class ScopedViewModel: ViewModel(), CoroutineScope {
 
-    private val job: Job = Job()
+    protected val job: Job = Job()
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main

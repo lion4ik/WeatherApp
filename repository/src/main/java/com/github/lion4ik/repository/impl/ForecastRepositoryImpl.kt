@@ -4,7 +4,7 @@ import com.github.lion4ik.core.model.Forecast
 import com.github.lion4ik.core.remote.ForecastRemote
 import com.github.lion4ik.core.repository.ForecastRepository
 
-class ForecastRepositoryImpl(private val remote: ForecastRemote) : ForecastRepository {
+internal class ForecastRepositoryImpl(private val remote: ForecastRemote) : ForecastRepository {
 
     override suspend fun getSavedForecast(lat: Double, long: Double, lang: String?, units: String?): Forecast {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
