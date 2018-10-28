@@ -19,7 +19,6 @@ ext {
             mockito                  : '2.21.0', // https://mvnrepository.com/artifact/org.mockito/mockito-core
             mockitoKotlin            : '2.0.0-RC3', // https://github.com/nhaarman/mockito-kotlin/releases
             jUnit                    : '4.12',
-            androidRunner            : '1.0.2',  // https://developer.android.com/training/testing/junit-runner
             robolectric              : '3.8',     // https://github.com/robolectric/robolectric/releases
             googlePlayServices       : '16.0.0'
     ]
@@ -55,8 +54,6 @@ ext {
             mockitoKotlin            : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}",
             robolectric              : "org.robolectric:robolectric:${versions.robolectric}",
             archTestHelpers          : "android.arch.core:core-testing:${versions.archComponents}",
-
-            androidRunner            : "com.android.support.test:runner:${versions.androidRunner}",
     ]
 
     def impl = "implementation"
@@ -127,6 +124,11 @@ ext {
 
             [configuration: impl, dependency: libs.dagger],
             [configuration: apt, dependency: libs.daggerCompiler],
+
+            [configuration: testImpl, dependency: testLibs.junit],
+            [configuration: testImpl, dependency: testLibs.mockito],
+            [configuration: testImpl, dependency: testLibs.mockitoKotlin],
+            [configuration: testImpl, dependency: libs.coroutines],
     ]
 
     remoteDependencies = [
