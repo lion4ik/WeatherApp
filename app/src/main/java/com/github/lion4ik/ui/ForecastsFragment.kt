@@ -59,6 +59,8 @@ class ForecastsFragment : BaseFragment() {
     private fun initForecastList() {
         forecastList.layoutManager = LinearLayoutManager(context)
         forecastList.setHasFixedSize(true)
+
+        forecastList.addItemDecoration(SimpleItemDecorator(resources.getDrawable(R.drawable.shape_divider, null)))
         forecastList.adapter = adapter
     }
 
