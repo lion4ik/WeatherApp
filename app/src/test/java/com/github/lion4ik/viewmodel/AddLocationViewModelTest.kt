@@ -61,13 +61,7 @@ class AddLocationViewModelTest {
             } doReturn forecast
         }
 
-        val addForecastUseCase: AddForecastUseCase = mock {
-            onBlocking {
-                execute(forecast)
-            } doReturn Unit
-        }
-
-        initViewModel(forecastUseCase, addForecastUseCase)
+        initViewModel(forecastUseCase, mock())
 
         viewModel.getLocationForecast(defaultLocation)
 
@@ -90,13 +84,7 @@ class AddLocationViewModelTest {
             } doThrow ApiException()
         }
 
-        val addForecastUseCase: AddForecastUseCase = mock {
-            onBlocking {
-                execute(forecast)
-            } doReturn Unit
-        }
-
-        initViewModel(forecastUseCase, addForecastUseCase)
+        initViewModel(forecastUseCase, mock())
 
         viewModel.getLocationForecast(defaultLocation)
 
@@ -108,25 +96,8 @@ class AddLocationViewModelTest {
 
     @Test
     fun `when onLocationClicked called then correct data passed to observer`() {
-        val forecastUseCase: GetForecastUseCase = mock {
-            onBlocking {
-                execute(
-                    defaultLocation.lat,
-                    defaultLocation.long,
-                    defaultLocation.lang,
-                    defaultLocation.units
-                )
-            } doReturn forecast
-        }
-
-        val addForecastUseCase: AddForecastUseCase = mock {
-            onBlocking {
-                execute(forecast)
-            } doReturn Unit
-        }
-
         val latLng = LatLng(defaultLocation.lat, defaultLocation.long)
-        initViewModel(forecastUseCase, addForecastUseCase)
+        initViewModel(mock(), mock())
         viewModel.locationSelected.observeForever(locationSelectedObserver)
         viewModel.onLocationClicked(latLng)
         verify(locationSelectedObserver).onChanged(latLng)
