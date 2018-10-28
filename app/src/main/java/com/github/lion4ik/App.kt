@@ -19,7 +19,7 @@ class App : Application() {
         @Suppress("DEPRECATION")
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule())
-            .remoteModule(RemoteModule(BuildConfig.API_BASE_URL, BuildConfig.API_ALLOW_ANY_CERT, true))
+            .remoteModule(RemoteModule(BuildConfig.API_BASE_URL, BuildConfig.API_ALLOW_ANY_CERT, true, BuildConfig.API_KEY))
             .storageModule(StorageModule(this))
             .build()
     }

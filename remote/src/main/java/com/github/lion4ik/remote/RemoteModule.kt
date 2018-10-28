@@ -2,6 +2,7 @@ package com.github.lion4ik.remote
 
 import com.github.lion4ik.core.remote.ForecastRemote
 import com.github.lion4ik.remote.api.ForecastApi
+import com.github.lion4ik.remote.client.AuthorizationInterceptor
 import com.github.lion4ik.remote.impl.ForecastRemoteImpl
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -23,7 +24,8 @@ import javax.net.ssl.X509TrustManager
 @Module
 class RemoteModule(private val baseUrl: String,
                    private val allowUntrustedConnection: Boolean,
-                   private val fullLog: Boolean) {
+                   private val fullLog: Boolean,
+                   private val apiKey: String) {
 
     companion object {
         private const val CONNECT_TIMEOUT = 20L
@@ -60,6 +62,7 @@ class RemoteModule(private val baseUrl: String,
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+            .addInterceptor(AuthorizationInterceptor(apiKey))
             .addInterceptor(logging)
 
         if(allowUntrustedConnection){

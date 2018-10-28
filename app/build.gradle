@@ -16,6 +16,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField 'String', 'API_BASE_URL', '"https://prometheus-api.draewil.net"'
+        buildConfigField 'String', 'API_KEY', '"c6987ba1fcc7450aea9cff041bb42825"'
         buildConfigField 'boolean', 'API_ALLOW_ANY_CERT', 'true'
     }
 
