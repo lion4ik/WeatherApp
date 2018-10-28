@@ -9,11 +9,12 @@ import android.view.ViewGroup
 import com.github.lion4ik.R
 import com.github.lion4ik.core.model.Forecast
 import kotlinx.android.synthetic.main.list_item_forecast.view.*
+import java.text.DecimalFormat
 
 class ForecastAdapter : ListAdapter<Forecast, ForecastAdapter.ForecastViewHolder>(diffCallback) {
 
     companion object {
-        val diffCallback = object : DiffUtil.ItemCallback<Forecast>() {
+        private val diffCallback = object : DiffUtil.ItemCallback<Forecast>() {
 
             override fun areItemsTheSame(oldItem: Forecast, newItem: Forecast) =
                 oldItem == newItem
@@ -21,6 +22,9 @@ class ForecastAdapter : ListAdapter<Forecast, ForecastAdapter.ForecastViewHolder
             override fun areContentsTheSame(oldItem: Forecast, newItem: Forecast) =
                 oldItem == newItem
         }
+
+        private val speedFormat = DecimalFormat("#.##")
+        private val temperatureFormat = DecimalFormat("#.#")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder {
@@ -29,19 +33,27 @@ class ForecastAdapter : ListAdapter<Forecast, ForecastAdapter.ForecastViewHolder
         return ForecastViewHolder(view)
     }
 
-    override fun onBindViewHolder(viewHolder: ForecastViewHolder, position: Int) = viewHolder.bindData(getItem(position))
+    override fun onBindViewHolder(viewHolder: ForecastViewHolder, position: Int) =
+        viewHolder.bindData(getItem(position))
 
     class ForecastViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bindData(item: Forecast) {
             itemView.apply {
                 forecastTitle.text = item.timezone
-                forecastTemperature.text = item.currently.temperature.toString()
+                forecastTemperature.text =
+                        context.getString(
+                            R.string.fragment_forecasts_temperature_units,
+                            temperatureFormat.format(item.temperature)
+                        )
                 forecastLocation.text = "${item.latitude}, ${item.longitude}"
-                forecastSummary.text = item.currently.summary
-                forecastDetails.text = item.currently.summary
-                humidity.text = item.currently.humidity.toString()
-                windSpeed.text = item.currently.windSpeed.toString()
+                forecastSummary.text = item.summary
+                forecastDetails.text = item.nearestForecastSummary
+                humidity.text = item.humidity.toString()
+                windSpeed.text = context.getString(
+                    R.string.fragment_forecasts_speed_units,
+                    speedFormat.format(item.windSpeed)
+                )
             }
         }
     }

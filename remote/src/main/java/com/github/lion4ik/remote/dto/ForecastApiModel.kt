@@ -6,8 +6,12 @@ data class ForecastApiModel(
     val latitude: Double,
     val longitude: Double,
     val timezone: String,
-    val currently: CurrentForecastApiModel
+    val currently: CurrentForecastApiModel,
+    val minutely: MinutelyForecastApiModel?
 ) {
 
-    fun toForecast(): Forecast = Forecast(latitude, longitude, timezone, currently.toCurrentForecast())
+    fun toForecast(): Forecast = Forecast(
+        latitude, longitude, timezone, currently.summary, minutely?.summary ?: "",
+        currently.temperature, currently.humidity, currently.windSpeed, currently.time
+    )
 }

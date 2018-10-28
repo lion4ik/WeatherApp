@@ -9,4 +9,7 @@
     <string name="fragment_forecasts_empty">No forecasts. Please click plus button to add.</string>
     <string name="fragment_forecasts_humidity_title">Humidity</string>
     <string name="fragment_forecasts_win_speed_title">Wind speed</string>
+    
+    <string name="fragment_forecasts_speed_units">%s KM/H</string>
+    <string name="fragment_forecasts_temperature_units">%s°C</string>
 </resources>

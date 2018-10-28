@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "1136f1942e47cc8997210e061f5fc5dd",
+    "identityHash": "306bcdc8df430e69ef95dbffe52884bf",
     "entities": [
       {
         "tableName": "forecast",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `timezone` TEXT NOT NULL, `summary` TEXT NOT NULL, `icon` TEXT NOT NULL, `temperature` REAL NOT NULL, `humidity` REAL NOT NULL, `windSpeed` REAL NOT NULL, `windBearing` INTEGER NOT NULL, `time` INTEGER NOT NULL, `forecastId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `timezone` TEXT NOT NULL, `summary` TEXT NOT NULL, `nearestForecastSummary` TEXT NOT NULL, `temperature` REAL NOT NULL, `humidity` REAL NOT NULL, `windSpeed` REAL NOT NULL, `time` INTEGER NOT NULL, `forecastId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "latitude",
@@ -33,8 +33,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "icon",
-            "columnName": "icon",
+            "fieldPath": "nearestForecastSummary",
+            "columnName": "nearestForecastSummary",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -54,12 +54,6 @@
             "fieldPath": "windSpeed",
             "columnName": "windSpeed",
             "affinity": "REAL",
-            "notNull": true
-          },
-          {
-            "fieldPath": "windBearing",
-            "columnName": "windBearing",
-            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -87,7 +81,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"1136f1942e47cc8997210e061f5fc5dd\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"306bcdc8df430e69ef95dbffe52884bf\")"
     ]
   }
 }
