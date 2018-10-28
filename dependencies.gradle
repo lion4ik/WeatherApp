@@ -21,6 +21,7 @@ ext {
             jUnit                    : '4.12',
             androidRunner            : '1.0.2',  // https://developer.android.com/training/testing/junit-runner
             robolectric              : '3.8',     // https://github.com/robolectric/robolectric/releases
+            googlePlayServices       : '16.0.0'
     ]
 
     def libs = [
@@ -45,6 +46,7 @@ ext {
             retrofit                 : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
             retrofitConverterGson    : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
             okhttpLogging            : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+            googlePlayServices       : "com.google.android.gms:play-services-maps:${versions.googlePlayServices}"
     ]
 
     def testLibs = [
@@ -95,6 +97,7 @@ ext {
             [configuration: impl, dependency: libs.coroutines],
 
             [configuration: impl, dependency: libs.timber],
+            [configuration: impl, dependency: libs.googlePlayServices],
 
             [configuration: testImpl, dependency: testLibs.junit],
             [configuration: testImpl, dependency: testLibs.mockito],

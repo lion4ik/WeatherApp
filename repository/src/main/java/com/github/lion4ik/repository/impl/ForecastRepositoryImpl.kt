@@ -18,9 +18,9 @@ internal class ForecastRepositoryImpl(
     }
 
     override suspend fun getForecastRemote(lat: Double, long: Double, lang: String?, units: String?): Forecast =
-        coroutineScope {
-            val forecast = remote.getForecast(lat, long, lang, units)
-            async(Dispatchers.IO) { storage.addForecast(forecast) }.await()
-            forecast
-        }
+        remote.getForecast(lat, long, lang, units)
+
+    override suspend fun addForecast(forecast: Forecast) = coroutineScope {
+        async(Dispatchers.IO) { storage.addForecast(forecast) }.await()
+    }
 }

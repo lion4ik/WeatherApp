@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="fab_elevation">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="fragment_forecasts_text_margin_top">8dp</dimen>
     <dimen name="fragment_forecasts_drawable_padding">24dp</dimen>
+
+    <dimen name="fragment_add_location_title_layout_padding">8dp</dimen>
+    <dimen name="fragment_add_location_position_text_size">12sp</dimen>
+
+    <integer name="fragment_animation_time">250</integer>
 </resources>

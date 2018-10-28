@@ -4,6 +4,7 @@ import com.github.lion4ik.domain.UseCaseModule
 import com.github.lion4ik.remote.RemoteModule
 import com.github.lion4ik.repository.RepositoryModule
 import com.github.lion4ik.storage.StorageModule
+import com.github.lion4ik.ui.AddLocationFragment
 import com.github.lion4ik.ui.ForecastsFragment
 import com.github.lion4ik.ui.MainActivity
 import dagger.Component
@@ -22,4 +23,6 @@ interface AppComponent {
     fun inject(mainActivity: MainActivity)
 
     fun inject(forecastsFragment: ForecastsFragment)
+
+    fun inject(addLocationFragment: AddLocationFragment)
 }

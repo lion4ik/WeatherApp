@@ -14,7 +14,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Europe/UTC"/>
+            tools:text="Europe/London"/>
 
     <TextView
             android:id="@+id/forecastTemperature"
@@ -35,7 +35,7 @@
             android:layout_marginStart="32dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/forecastTemperature"
             app:layout_constraintStart_toEndOf="@+id/forecastTemperature"
-            tools:text="51.500334,-0.085013"/>
+            tools:text="51.500334, -0.085013"/>
 
     <TextView
             android:id="@+id/forecastSummary"

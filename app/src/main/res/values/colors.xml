@@ -9,4 +9,5 @@
 
     <color name="pr_forecast_title">#47a39b</color>
     <color name="pr_divider">#e9e9e9</color>
+    <color name="pr_location_title_layout">#7fffffff</color>
 </resources>

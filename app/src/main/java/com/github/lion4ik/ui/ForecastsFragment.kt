@@ -12,12 +12,10 @@ import com.github.lion4ik.ui.base.BaseFragment
 import com.github.lion4ik.util.lazyNotThreadSafe
 import com.github.lion4ik.util.nonNullObserve
 import com.github.lion4ik.util.showSnackBar
-import com.github.lion4ik.viewmodel.AddLocationViewModel
 import com.github.lion4ik.viewmodel.ForecastsViewModel
 import com.github.lion4ik.viewmodel.MainActivityViewModelFactory
 import kotlinx.android.synthetic.main.element_toolbar.*
 import kotlinx.android.synthetic.main.fragment_forecast.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class ForecastsFragment : BaseFragment() {
@@ -28,10 +26,6 @@ class ForecastsFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: MainActivityViewModelFactory
-
-    private val forecastViewModel by lazyNotThreadSafe {
-        ViewModelProviders.of(this, viewModelFactory).get(AddLocationViewModel::class.java)
-    }
 
     private val forecastsViewModel by lazyNotThreadSafe {
         ViewModelProviders.of(this, viewModelFactory).get(ForecastsViewModel::class.java)
@@ -51,7 +45,7 @@ class ForecastsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addLocationFab.setOnClickListener {
-            forecastViewModel.getLocationForecast(AddLocationViewModel.ForecastParams(51.500334, -0.085013))
+            forecastsViewModel.onAddLocationClicked()
         }
         initForecastList()
         observeData()
@@ -65,17 +59,14 @@ class ForecastsFragment : BaseFragment() {
     }
 
     private fun observeData() {
-        forecastsViewModel.getAllForecasts().nonNullObserve(this) {
-            Timber.d("forecasts: " + it)
-            adapter.addList(it)
-        }
+        forecastsViewModel.getAllForecasts().nonNullObserve(this) { adapter.submitList(it) }
         forecastsViewModel.error.nonNullObserve(this) { showSnackBar(it) }
-        forecastViewModel.getLocationForecast(AddLocationViewModel.ForecastParams(51.500334, -0.085013))
-            .nonNullObserve(this) {
-                Timber.d("forecast: " + it)
-                adapter += it
-            }
-//
-//        forecastViewModel.error.nonNullObserve(this) { showSnackBar(it) }
+        forecastsViewModel.isEmpty.nonNullObserve(this) { isEmpty ->
+            setEmptyVisible(isEmpty)
+        }
+    }
+
+    private fun setEmptyVisible(isVisible: Boolean) {
+        emptyList.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 }

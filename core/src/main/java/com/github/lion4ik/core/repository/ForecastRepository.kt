@@ -8,4 +8,6 @@ interface ForecastRepository {
 
     suspend fun getAllForecasts(): List<Forecast>
 
+    suspend fun addForecast(forecast: Forecast)
+
 }

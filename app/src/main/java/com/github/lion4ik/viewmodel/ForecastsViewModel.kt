@@ -20,5 +20,5 @@ class ForecastsViewModel(private val router: Router,
 
     fun onAddLocationClicked() = router.navigateTo(AddLocationScreen())
 
-    fun getAllForecasts(): LiveData<List<Forecast>> = getRefreshableResult(Unit)
+    fun getAllForecasts(): LiveData<List<Forecast>> = getRefreshableResult(Unit, true)
 }
