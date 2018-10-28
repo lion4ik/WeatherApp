@@ -2,6 +2,7 @@ package com.github.lion4ik.ui
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.View
@@ -59,8 +60,7 @@ class ForecastsFragment : BaseFragment() {
     private fun initForecastList() {
         forecastList.layoutManager = LinearLayoutManager(context)
         forecastList.setHasFixedSize(true)
-
-        forecastList.addItemDecoration(SimpleItemDecorator(resources.getDrawable(R.drawable.shape_divider, null)))
+        forecastList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         forecastList.adapter = adapter
     }
 
