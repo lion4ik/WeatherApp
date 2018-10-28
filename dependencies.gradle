@@ -17,7 +17,7 @@ ext {
             gson                     : '2.8.2',  // https://github.com/google/gson/releases
 
             mockito                  : '2.21.0', // https://mvnrepository.com/artifact/org.mockito/mockito-core
-            mockitoKotlin            : '2.0.0-RC1', // https://github.com/nhaarman/mockito-kotlin/releases
+            mockitoKotlin            : '2.0.0-RC3', // https://github.com/nhaarman/mockito-kotlin/releases
             jUnit                    : '4.12',
             androidRunner            : '1.0.2',  // https://developer.android.com/training/testing/junit-runner
             robolectric              : '3.8',     // https://github.com/robolectric/robolectric/releases
@@ -104,6 +104,7 @@ ext {
             [configuration: testImpl, dependency: testLibs.mockitoKotlin],
             [configuration: testImpl, dependency: testLibs.robolectric],
             [configuration: testImpl, dependency: testLibs.archTestHelpers],
+            [configuration: testImpl, dependency: libs.coroutines],
     ]
 
     coreDependencies = [

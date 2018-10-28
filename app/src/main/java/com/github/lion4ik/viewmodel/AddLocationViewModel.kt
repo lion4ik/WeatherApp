@@ -9,8 +9,6 @@ import com.github.lion4ik.misc.SingleLiveData
 import com.github.lion4ik.util.getCommonErrorDescription
 import com.github.lion4ik.viewmodel.base.ScopedViewModel
 import com.google.android.gms.maps.model.LatLng
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import ru.terrakok.cicerone.Router
 
@@ -47,8 +45,8 @@ class AddLocationViewModel(
 
     fun onSelectedLocation() {
         launch(coroutineContext) {
-            forecastForCurrentLocation.value?.let {forecast ->
-                async(Dispatchers.IO){addForecastUseCase.execute(forecast) }.await()
+            forecastForCurrentLocation.value?.let { forecast ->
+                addForecastUseCase.execute(forecast)
                 router.exit()
             }
         }

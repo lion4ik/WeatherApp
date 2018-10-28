@@ -6,5 +6,5 @@ import com.github.lion4ik.core.repository.ForecastRepository
 class AddForecastUseCase(private val repository: ForecastRepository) {
 
     suspend fun execute(forecast: Forecast) =
-            repository.addForecast(forecast)
+        repository.addForecast(forecast)
 }
