@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.View
 import com.github.lion4ik.App
@@ -17,6 +18,7 @@ import com.github.lion4ik.viewmodel.MainActivityViewModelFactory
 import kotlinx.android.synthetic.main.element_toolbar.*
 import kotlinx.android.synthetic.main.fragment_forecast.*
 import javax.inject.Inject
+
 
 class ForecastsFragment : BaseFragment() {
 
@@ -56,6 +58,19 @@ class ForecastsFragment : BaseFragment() {
         forecastList.setHasFixedSize(true)
         forecastList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         forecastList.adapter = adapter
+        forecastList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0 || dy < 0 && addLocationFab.isShown)
+                    addLocationFab.hide()
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    addLocationFab.show()
+                }
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+        })
     }
 
     private fun observeData() {
