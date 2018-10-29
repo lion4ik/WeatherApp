@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:shape="oval">
 
-    <solid android:color="#57c8fa"/>
+    <solid android:color="@color/pr_temperature"/>
     <size
             android:width="64dp"
             android:height="64dp"/>
