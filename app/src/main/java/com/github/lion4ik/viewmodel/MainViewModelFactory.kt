@@ -10,7 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MainActivityViewModelFactory @Inject constructor(
+class MainViewModelFactory @Inject constructor(
     private val getForecastUseCase: GetForecastUseCase,
     private val getAllForecastsUseCase: GetAllForecastsUseCase,
     private val addForecastUseCase: AddForecastUseCase,
@@ -19,8 +19,6 @@ class MainActivityViewModelFactory @Inject constructor(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T = when {
-        modelClass.isAssignableFrom(MainActivityViewModel::class.java) -> MainActivityViewModel()
-
         modelClass.isAssignableFrom(ToolbarBackButtonViewModel::class.java) -> ToolbarBackButtonViewModel()
 
         modelClass.isAssignableFrom(ForecastsViewModel::class.java) -> ForecastsViewModel(router, getAllForecastsUseCase)

@@ -9,7 +9,7 @@ import com.github.lion4ik.navigation.MainActivityNavigator
 import com.github.lion4ik.ui.base.BaseActivity
 import com.github.lion4ik.util.lazyNotThreadSafe
 import com.github.lion4ik.util.nonNullObserve
-import com.github.lion4ik.viewmodel.MainActivityViewModelFactory
+import com.github.lion4ik.viewmodel.MainViewModelFactory
 import com.github.lion4ik.viewmodel.ToolbarBackButtonViewModel
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.commands.Command
@@ -19,7 +19,7 @@ import javax.inject.Inject
 class MainActivity : BaseActivity() {
 
     @Inject
-    lateinit var viewModelFactory: MainActivityViewModelFactory
+    lateinit var viewModelFactory: MainViewModelFactory
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder

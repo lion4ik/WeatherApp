@@ -14,7 +14,7 @@ import com.github.lion4ik.util.lazyNotThreadSafe
 import com.github.lion4ik.util.nonNullObserve
 import com.github.lion4ik.util.showSnackBar
 import com.github.lion4ik.viewmodel.ForecastsViewModel
-import com.github.lion4ik.viewmodel.MainActivityViewModelFactory
+import com.github.lion4ik.viewmodel.MainViewModelFactory
 import kotlinx.android.synthetic.main.element_toolbar.*
 import kotlinx.android.synthetic.main.fragment_forecast.*
 import javax.inject.Inject
@@ -27,7 +27,7 @@ class ForecastsFragment : BaseFragment() {
     }
 
     @Inject
-    lateinit var viewModelFactory: MainActivityViewModelFactory
+    lateinit var viewModelFactory: MainViewModelFactory
 
     private val forecastsViewModel by lazyNotThreadSafe {
         ViewModelProviders.of(this, viewModelFactory).get(ForecastsViewModel::class.java)

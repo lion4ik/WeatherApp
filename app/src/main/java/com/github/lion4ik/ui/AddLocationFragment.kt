@@ -12,7 +12,7 @@ import com.github.lion4ik.util.lazyNotThreadSafe
 import com.github.lion4ik.util.nonNullObserve
 import com.github.lion4ik.util.showSnackBar
 import com.github.lion4ik.viewmodel.AddLocationViewModel
-import com.github.lion4ik.viewmodel.MainActivityViewModelFactory
+import com.github.lion4ik.viewmodel.MainViewModelFactory
 import com.github.lion4ik.viewmodel.ToolbarBackButtonViewModel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -31,7 +31,7 @@ class AddLocationFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     @Inject
-    lateinit var viewModelFactory: MainActivityViewModelFactory
+    lateinit var viewModelFactory: MainViewModelFactory
 
     private val toolbarBackButtonViewModel by lazyNotThreadSafe {
         activity?.run { ViewModelProviders.of(this, viewModelFactory).get(ToolbarBackButtonViewModel::class.java) }
