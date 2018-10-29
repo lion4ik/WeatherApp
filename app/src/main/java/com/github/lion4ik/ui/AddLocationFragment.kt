@@ -52,6 +52,7 @@ class AddLocationFragment : BaseFragment(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.appComponent.inject(this)
+        observeData()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,7 +60,6 @@ class AddLocationFragment : BaseFragment(), OnMapReadyCallback {
         locationMap.onCreate(savedInstanceState)
         locationMap.getMapAsync(this)
         chooseLocationFab.setOnClickListener { addLocationViewModel.onSelectedLocation() }
-        observeData()
     }
 
     override fun onBeforeAttachToolbar(toolbar: Toolbar?) {

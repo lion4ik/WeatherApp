@@ -50,6 +50,7 @@ class ForecastsFragment : BaseFragment() {
             forecastsViewModel.onAddLocationClicked()
         }
         initForecastList()
+        // TODO move observing to onCreate
         observeData()
     }
 
