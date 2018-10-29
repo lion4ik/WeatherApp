@@ -1,4 +1,4 @@
-package com.github.lion4ik.storage.imnp
+package com.github.lion4ik.storage.impl
 
 import com.github.lion4ik.core.model.Forecast
 import com.github.lion4ik.core.storage.ForecastStorage

@@ -3,7 +3,7 @@ package com.github.lion4ik.storage
 import android.arch.persistence.room.Room
 import android.content.Context
 import com.github.lion4ik.core.storage.ForecastStorage
-import com.github.lion4ik.storage.imnp.ForecastStorageImpl
+import com.github.lion4ik.storage.impl.ForecastStorageImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
