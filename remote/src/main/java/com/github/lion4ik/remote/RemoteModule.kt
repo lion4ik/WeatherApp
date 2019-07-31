@@ -2,12 +2,13 @@ package com.github.lion4ik.remote
 
 import com.github.lion4ik.core.remote.ForecastRemote
 import com.github.lion4ik.remote.api.ForecastApi
+import com.github.lion4ik.remote.client.AllowAllHostNameVerifier
+import com.github.lion4ik.remote.client.AllowAllTrustManager
 import com.github.lion4ik.remote.client.AuthorizationInterceptor
+import com.github.lion4ik.remote.client.RemoteSslSocketFactory
 import com.github.lion4ik.remote.impl.ForecastRemoteImpl
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.imagenpay.app.remote.misc.AllowAllHostNameVerifier
-import com.imagenpay.app.remote.misc.AllowAllTrustManager
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides

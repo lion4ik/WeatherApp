@@ -1,4 +1,4 @@
-package com.imagenpay.app.remote.misc
+package com.github.lion4ik.remote.client
 
 import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLSession

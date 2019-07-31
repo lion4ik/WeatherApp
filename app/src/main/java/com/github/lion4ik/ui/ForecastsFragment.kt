@@ -11,12 +11,9 @@ import com.github.lion4ik.App
 import com.github.lion4ik.R
 import com.github.lion4ik.ui.base.BaseFragment
 import com.github.lion4ik.util.lazyNotThreadSafe
-import com.github.lion4ik.util.nonNullObserve
 import com.github.lion4ik.util.showSnackBar
 import com.github.lion4ik.viewmodel.ForecastsViewModel
 import com.github.lion4ik.viewmodel.MainViewModelFactory
-import kotlinx.android.synthetic.main.element_toolbar.*
-import kotlinx.android.synthetic.main.fragment_forecast.*
 import javax.inject.Inject
 
 
@@ -61,7 +58,7 @@ class ForecastsFragment : BaseFragment() {
         forecastList.adapter = adapter
         forecastList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0 || dy < 0 && addLocationFab.isShown)
+                if (dy != 0  && addLocationFab.isShown)
                     addLocationFab.hide()
             }
 

@@ -1,4 +1,4 @@
-package com.github.lion4ik.remote
+package com.github.lion4ik.remote.client
 
 import java.security.KeyManagementException
 import java.security.NoSuchAlgorithmException

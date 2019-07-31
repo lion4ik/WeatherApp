@@ -1,4 +1,4 @@
-package com.imagenpay.app.remote.misc
+package com.github.lion4ik.remote.client
 
 import java.security.cert.X509Certificate
 import javax.net.ssl.X509TrustManager

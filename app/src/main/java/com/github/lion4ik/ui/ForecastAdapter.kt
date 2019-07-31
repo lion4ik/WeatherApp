@@ -19,8 +19,7 @@ class ForecastAdapter : ListAdapter<Forecast, ForecastAdapter.ForecastViewHolder
             override fun areItemsTheSame(oldItem: Forecast, newItem: Forecast) =
                 oldItem == newItem
 
-            override fun areContentsTheSame(oldItem: Forecast, newItem: Forecast) =
-                oldItem == newItem
+            override fun areContentsTheSame(oldItem: Forecast, newItem: Forecast) = true
         }
 
         private val speedFormat = DecimalFormat("#.##")
