@@ -58,7 +58,7 @@ class ForecastsFragment : BaseFragment() {
         forecastList.adapter = adapter
         forecastList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy != 0  && addLocationFab.isShown)
+                if (dy != 0 && addLocationFab.isShown)
                     addLocationFab.hide()
             }
 
